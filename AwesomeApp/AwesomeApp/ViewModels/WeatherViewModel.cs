@@ -36,9 +36,11 @@ namespace AwesomeApp.ViewModels
                 IsBusy = false;
             }
         }
+        
         public WeatherMainModel WeatherMainModel
         {
-            get { return _weatherMainModel; }
+            get {
+                return _weatherMainModel; }
             set
             {
                 _weatherMainModel = value;

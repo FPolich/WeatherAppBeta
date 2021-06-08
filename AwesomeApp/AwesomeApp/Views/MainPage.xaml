@@ -6,16 +6,14 @@
     <ContentPage.Resources>
         <StyleSheet Source="./Styles.css" />
     </ContentPage.Resources>
-    
+
     <ContentPage.BindingContext>
         <weatherVm:WeatherViewModel/>
     </ContentPage.BindingContext>
-
     
     <StackLayout Padding="20,40,20,20">
         <Entry Text="{Binding City, Mode=TwoWay}"
             Placeholder="Buscar una ciudad"
-            PlaceholderColor="Red"
             />
         <Button Text="Buscar" Command="{Binding ButtonSearch}"/>
         <ActivityIndicator IsRunning="{Binding IsBusy, Mode=TwoWay}"/>
@@ -33,7 +31,7 @@
                 <Label Text="Temperatura:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.main.temp}"/>
+                <Label Text="{Binding WeatherMainModel.main.tempFormat}"/>
             </StackLayout>
         </StackLayout>
 
@@ -42,7 +40,7 @@
                 <Label Text="Humedad:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.main.humidity}"/>
+                <Label Text="{Binding WeatherMainModel.main.humidityFormat}"/>
             </StackLayout>
         </StackLayout>
 
@@ -60,8 +58,9 @@
                 <Label Text="Velocidad del viento:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.wind.speed}"/>
+                <Label Text="{Binding WeatherMainModel.wind.speedFormat}"/>
             </StackLayout>
         </StackLayout>
     </StackLayout>
+
 </ContentPage>

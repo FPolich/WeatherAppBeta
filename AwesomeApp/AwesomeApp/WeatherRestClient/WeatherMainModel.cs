@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using System;
 
 namespace AwesomeApp.WeatherRestClient
 {
@@ -31,13 +32,32 @@ namespace AwesomeApp.WeatherRestClient
     {
         [JsonProperty("temp")]
         public string temp { get; set; }
+        public string tempFormat { 
+            get {
+                double aux = Math.Round(double.Parse(temp) - 273,1);
+                return aux.ToString() + " °C";
+            } 
+            set { } }
+
         [JsonProperty("humidity")]
         public string humidity { get; set; }
+
+        public string humidityFormat { 
+            get {
+                return humidity + " %";
+            } set { } }
     }
 
     public class WeatherWindDetails
     {
         [JsonProperty("speed")]
         public string speed { get; set; }
+        public string speedFormat
+        {
+            get {
+                return speed + " m/s";
+            }
+            set { }
+        }
     }
 }

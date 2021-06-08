@@ -1,24 +1,25 @@
-﻿ContentPage {
-    background-color: #B9BAA3;
-    padding: 15;
+﻿^ContentPage {
+    background-color: black;
 }
 
-Label {
+^Label {
     text-align: left;
     font-style: bold;
-    font-size: 30;
+    font-size: 20;
     color: blue;
 }
 
-Entry {
-    font-size: 20;
+^Entry {
+    font-size: 30;
     background-color: white;
     margin: 10 0;
-    color: #0A100D;
+    color: black;
 }
 
-Button {
-    font-size: 16;
-    color: #A22C29;
+^Button {
+    font-size: 30;
+    color: black;
     margin: 5 0;
+    background-color: yellowgreen;
+    border-radius: 30;
 }
