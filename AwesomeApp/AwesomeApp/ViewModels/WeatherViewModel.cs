@@ -14,35 +14,35 @@ namespace AwesomeApp.ViewModels
         WeatherServices _weatherServices = new WeatherServices();
 
         private string _city;   //for entry binding and for method parameter value
-        public string City {
+        public string City
+        {
             get { return _city; }
             set {
                 _city = value;
                 OnPropertyChanged(nameof(City));
             }
         }
-
-        private async Task InitializeGetWeatherAsync() {
-            try
-            {
+        private async Task InitializeGetWeatherAsync()
+        {
+            try {
                 IsBusy = true;
                 WeatherMainModel = await _weatherServices.GetWeatherDetails(_city);
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine("InitializeGetWeatherAsync: " + e);
             }
-            finally
-            {
+            finally {
                 IsBusy = false;
             }
         }
-        
+
         public WeatherMainModel WeatherMainModel
         {
             get {
-                return _weatherMainModel; }
-            set
-            {
+                return _weatherMainModel;
+            }
+            set {
                 _weatherMainModel = value;
                 OnPropertyChanged(nameof(WeatherMainModel));
             }
@@ -55,7 +55,8 @@ namespace AwesomeApp.ViewModels
             ButtonSearch = new Command(PerfomButtonSearch);
         }
 
-        public bool IsBusy {
+        public bool IsBusy
+        {
             get { return _isBusy; }
             set {
                 _isBusy = value;
@@ -72,19 +73,17 @@ namespace AwesomeApp.ViewModels
         public ICommand ButtonSearch { get; }
         public void PerfomButtonSearch()
         {
-            try
-            {
+            try {
                 Task.Run(async () =>
                             {
                                 await InitializeGetWeatherAsync();
                             });
-                            OnPropertyChanged(nameof(ButtonSearch));
-            } catch (Exception e)
+                OnPropertyChanged(nameof(ButtonSearch));
+            }
+            catch (Exception e)
             {
                 Console.WriteLine("PerfomButtonSearch: " + e);
             }
-            
         }
-    }
+    }    
 }
-

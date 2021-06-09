@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Build" Version="16.10.0" />
     <PackageReference Include="Microsoft.TeamFoundationServer.ExtendedClient" Version="16.170.0" />
+    <PackageReference Include="NEST" Version="7.13.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.7.2" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
@@ -20,5 +21,11 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="PickerDemoPage.xaml.cs">
+      <DependentUpon>PickerDemoPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
