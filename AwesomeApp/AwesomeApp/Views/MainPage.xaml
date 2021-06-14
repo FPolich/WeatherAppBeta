@@ -2,27 +2,51 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AwesomeApp.MainPage"
-             xmlns:weatherVm="clr-namespace:AwesomeApp.ViewModels">
+             xmlns:weatherVm="clr-namespace:AwesomeApp.ViewModels" x:DataType="weatherVm:WeatherViewModel">
     <ContentPage.Resources>
         <StyleSheet Source="./Styles.css" />
     </ContentPage.Resources>
 
-    <ContentPage.BindingContext>
-        <weatherVm:WeatherViewModel/>
-    </ContentPage.BindingContext>
-    
+        <ContentPage.BindingContext>
+            <weatherVm:WeatherViewModel/>
+        </ContentPage.BindingContext>
+
     <StackLayout Padding="20,40,20,20">
-        <Entry Text="{Binding City, Mode=TwoWay}"
-            Placeholder="Buscar una ciudad"
-            />
+        <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+            <Entry  Text="{Binding City, Mode=TwoWay}"
+                    Placeholder="Buscar una ciudad"   
+                    CornerRadius="8"
+                        />
+        </StackLayout>
+      
         <Button Text="Buscar" Command="{Binding ButtonSearch}"/>
         <ActivityIndicator IsRunning="{Binding IsBusy, Mode=TwoWay}"/>
+
+        <StackLayout HorizontalOptions="Center">
+            <Label Text="Opciones guardadas"
+                   TextColor="GreenYellow"/>
+        </StackLayout>
+
+        <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+            <Picker Title="Selecciona una ciudad"
+                    HorizontalOptions="Center"
+                    FontSize="30"
+                    TitleColor="White"
+                    TextColor="Yellow"
+                    ItemsSource="{Binding SelectedService}"
+                    ItemDisplayBinding="{Binding values}"
+                    SelectedItem="{Binding selectedItem}" />
+        </StackLayout>
+
+
         <StackLayout Orientation="Horizontal">
             <StackLayout HorizontalOptions="StartAndExpand">
                 <Label Text="Ciudad:"/>
             </StackLayout>
+
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.name}"/>
+                <Label Text="{Binding WeatherMainModel.name}"
+                       TextColor="White"/>
             </StackLayout>
         </StackLayout>
 
@@ -31,7 +55,8 @@
                 <Label Text="Temperatura:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.main.tempFormat}"/>
+                <Label Text="{Binding WeatherMainModel.main.tempFormat}"
+                       TextColor="White"/>
             </StackLayout>
         </StackLayout>
 
@@ -40,7 +65,8 @@
                 <Label Text="Humedad:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.main.humidityFormat}"/>
+                <Label Text="{Binding WeatherMainModel.main.humidityFormat}"
+                       TextColor="White"/>
             </StackLayout>
         </StackLayout>
 
@@ -49,7 +75,8 @@
                 <Label Text="Estado del clima:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.weather[0].main}"/>
+                <Label Text="{Binding WeatherMainModel.weather[0].main}"
+                       TextColor="White"/>
             </StackLayout>
         </StackLayout>
 
@@ -58,9 +85,10 @@
                 <Label Text="Velocidad del viento:"/>
             </StackLayout>
             <StackLayout HorizontalOptions="EndAndExpand">
-                <Label Text="{Binding WeatherMainModel.wind.speedFormat}"/>
+                <Label Text="{Binding WeatherMainModel.wind.speedFormat}"
+                       TextColor="White"/>
             </StackLayout>
         </StackLayout>
-    </StackLayout>
 
+    </StackLayout>
 </ContentPage>

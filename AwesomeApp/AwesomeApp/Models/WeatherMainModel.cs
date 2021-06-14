@@ -60,4 +60,15 @@ namespace AwesomeApp.WeatherRestClient
             set { }
         }
     }
+
+    public class Items {
+        public int id { get; set; }
+        public string values { get; set; }
+        public Items (int Id, string Values) {
+            values = Values;
+            id = Id;
+        }
+
+        public Items() { }
+    }
 }

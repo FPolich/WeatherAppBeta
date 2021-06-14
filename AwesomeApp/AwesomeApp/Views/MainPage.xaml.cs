@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AwesomeApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,7 +14,9 @@ namespace AwesomeApp
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = new WeatherViewModel();
         }
+
     }
 
 }

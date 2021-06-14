@@ -1,12 +1,12 @@
 ﻿^ContentPage {
-    background-color: black;
+    background-color: #4E57AC;
 }
 
 ^Label {
     text-align: left;
     font-style: bold;
     font-size: 20;
-    color: blue;
+    color: black;
 }
 
 ^Entry {
