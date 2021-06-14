@@ -1,21 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
              x:Class="AwesomeApp.MainPage"
+             Title="Weather App"
+             ControlTemplate="{StaticResource PageWithGradient}"
              xmlns:weatherVm="clr-namespace:AwesomeApp.ViewModels" x:DataType="weatherVm:WeatherViewModel">
+
     <ContentPage.Resources>
         <StyleSheet Source="./Styles.css" />
     </ContentPage.Resources>
 
-        <ContentPage.BindingContext>
-            <weatherVm:WeatherViewModel/>
-        </ContentPage.BindingContext>
+    <ContentPage.BindingContext>
+        <weatherVm:WeatherViewModel/>
+    </ContentPage.BindingContext>
 
-    <StackLayout Padding="20,40,20,20">
-        <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+
+    <ContentPage.Content>
+
+        <StackLayout Padding="20,40,20,20">
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Weather App" 
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="50"
+                   />
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
             <Entry  Text="{Binding City, Mode=TwoWay}"
-                    Placeholder="Buscar una ciudad"   
-                    CornerRadius="8"
+                    Placeholder="Buscar una ciudad"
+                    PlaceholderColor="#00FFFD9"
+                    BackgroundColor="Transparent"
+                    HorizontalTextAlignment="Center"
                         />
         </StackLayout>
       
@@ -23,7 +41,7 @@
         <ActivityIndicator IsRunning="{Binding IsBusy, Mode=TwoWay}"/>
 
         <StackLayout HorizontalOptions="Center">
-            <Label Text="Opciones guardadas"
+            <Label Text="Opciones guardadas:"
                    TextColor="GreenYellow"/>
         </StackLayout>
 
@@ -40,6 +58,7 @@
 
 
         <StackLayout Orientation="Horizontal">
+            
             <StackLayout HorizontalOptions="StartAndExpand">
                 <Label Text="Ciudad:"/>
             </StackLayout>
@@ -51,9 +70,11 @@
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
+            
             <StackLayout HorizontalOptions="StartAndExpand">
                 <Label Text="Temperatura:"/>
             </StackLayout>
+            
             <StackLayout HorizontalOptions="EndAndExpand">
                 <Label Text="{Binding WeatherMainModel.main.tempFormat}"
                        TextColor="White"/>
@@ -61,9 +82,11 @@
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
+            
             <StackLayout HorizontalOptions="StartAndExpand">
                 <Label Text="Humedad:"/>
             </StackLayout>
+            
             <StackLayout HorizontalOptions="EndAndExpand">
                 <Label Text="{Binding WeatherMainModel.main.humidityFormat}"
                        TextColor="White"/>
@@ -74,6 +97,7 @@
             <StackLayout HorizontalOptions="StartAndExpand">
                 <Label Text="Estado del clima:"/>
             </StackLayout>
+            
             <StackLayout HorizontalOptions="EndAndExpand">
                 <Label Text="{Binding WeatherMainModel.weather[0].main}"
                        TextColor="White"/>
@@ -81,14 +105,21 @@
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
+
+
             <StackLayout HorizontalOptions="StartAndExpand">
                 <Label Text="Velocidad del viento:"/>
             </StackLayout>
+
             <StackLayout HorizontalOptions="EndAndExpand">
                 <Label Text="{Binding WeatherMainModel.wind.speedFormat}"
                        TextColor="White"/>
             </StackLayout>
         </StackLayout>
 
+                    
     </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
+
+    
